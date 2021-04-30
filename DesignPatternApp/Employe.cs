@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatternApp
 {
-    class Employe
+    public class Employe
     {
         public int Id { get; set; }
         public string Nom { get; set; }
