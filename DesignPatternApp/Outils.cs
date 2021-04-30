@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
 
-namespace Controllers
+namespace View
 {
-    public static class Autres
+    public static class Outils
     {
 
         public static string GetStringConsole(string messag = "Valeur ")
@@ -39,7 +35,6 @@ namespace Controllers
 
             return valeur;
         }
-
 
     }
 }
