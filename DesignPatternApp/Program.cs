@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using static System.Console;
 
 namespace DesignPatternApp
@@ -9,26 +10,25 @@ namespace DesignPatternApp
         {
             LocalStorage localStorage = LocalStorage.Instance;
             var employes = localStorage.Employes;
-
             int choix = -1;
+
             WriteLine("*** Ménu Gestion des employés ***" +
                 "\n1.- Ajouter un employé" +
                 "\n2.- Afficher la liste des employés" +
-                "\n3.- Afficher un employé" +
-                "\n Quelle action voulez vouz effectuer ? : ");
+                "\n3.- Afficher un employé");
 
             while (choix != 0)
             {
-                choix = GetIntConsole("Quelle action voulez vouz effectuer ? ");
+                choix = GetIntConsole("\nQuelle action voulez vouz effectuer : ");
 
                 switch (choix)
                 {
                     case 1:
                         var employe = new Employe
                         {
-                            Id = GetIntConsole("tapez l'Id"),
+                            Id = GetIntConsole("Tapez l'Id"),
                             Prenom = getStringConsole("Tapez le prénom : "),
-                            Nom = getStringConsole("Tapez le Nom : "),
+                            Nom = getStringConsole("Tapez le nom : "),
                         };
                         try
                         {
@@ -44,25 +44,25 @@ namespace DesignPatternApp
                     case 2:
                         foreach (var e in employes) WriteLine(e);
                         break;
-                    case 3: WriteLine("afficher un employé"); break;
-                    case 0: WriteLine("à bientôt..."); break;
-                    default:
+                    case 3:
+                        var id = GetIntConsole("Tapez l'Id : ");
+
+                        WriteLine(employes.Any(e => e.Id == id) ? employes.First(e => e.Id == id) : $"L'Id {id} n'est pas reconnu");
                         break;
+                    case 0: WriteLine("à bientôt..."); break;
+
+                    default: WriteLine("Action non reconnue..."); break;
                 }
             }
-            //Ajouter un employé en rentrant ses informations
-            //Afficher la liste des employés
-            //Afficher un employé en rentrant son Id
-
         }
 
         static string getStringConsole(string messag = "Valeur ")
         {
-            WriteLine(messag);
+            Write(messag);
             var s = ReadLine();
             while (String.IsNullOrEmpty(s))
             {
-                WriteLine("Le text ne peux etre vide :");
+                Write("Le text ne peux etre vide :");
                 s = ReadLine();
             }
             return s;
@@ -72,7 +72,7 @@ namespace DesignPatternApp
         {
             double valeur;
             while (!double.TryParse(getStringConsole(messag), out valeur))
-                WriteLine("verifiez votre saisie :");
+                Write("verifiez votre saisie :");
 
             return valeur;
         }
@@ -81,7 +81,7 @@ namespace DesignPatternApp
         {
             int valeur;
             while (!int.TryParse(getStringConsole(messag), out valeur))
-                WriteLine("verifiez votre saisie :");
+                Write("verifiez votre saisie :");
 
             return valeur;
         }
