@@ -23,5 +23,10 @@ namespace DesignPatternApp
                 else throw new Exception("Le salaire doit être supérieur à 0");
             }
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1} salaire : {2}",Prenom,Nom.ToUpper(),Salaire);
+        }
     }
 }
