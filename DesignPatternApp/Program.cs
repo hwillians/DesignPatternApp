@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Controllers;
 using static System.Console;
+using static Controllers.Autres;
 
 namespace DesignPatternApp
 {
@@ -8,7 +10,6 @@ namespace DesignPatternApp
     {
         static void Main(string[] args)
         {
-            var employes = LocalStorage.Instance.Employes;
             int choix = -1;
 
             WriteLine("*** Ménu Gestion des employés ***" +
@@ -25,15 +26,8 @@ namespace DesignPatternApp
                     case 1:
                         try
                         {
-                            var employe = new Employe
-                            {
-                                Id = GetIntConsole("Tapez l'Id"),
-                                Prenom = GetStringConsole("Tapez le prénom : "),
-                                Nom = GetStringConsole("Tapez le nom : "),
-                                Salaire = GetDoubleConsole("Tapez le salaire")
-                            };
-                            employes.Add(employe);
-                            WriteLine(employe);
+                            EmployeController.CreerEmployer();
+                            WriteLine("L'employé à été créé avec succès.");
                         }
                         catch (Exception e)
                         {
@@ -41,12 +35,10 @@ namespace DesignPatternApp
                         }
                         break;
                     case 2:
-                        foreach (var e in employes) WriteLine(e);
+                        WriteLine(String.Join("\n", LocalStorage.Instance.Employes));
                         break;
                     case 3:
-                        var id = GetIntConsole("Tapez l'Id : ");
-
-                        WriteLine(employes.Any(e => e.Id == id) ? employes.First(e => e.Id == id) : $"L'Id {id} n'est pas reconnu");
+                        WriteLine(EmployeController.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
                         break;
                     case 0: WriteLine("à bientôt..."); break;
 
@@ -54,36 +46,5 @@ namespace DesignPatternApp
                 }
             }
         }
-
-        static string GetStringConsole(string messag = "Valeur ")
-        {
-            Write(messag);
-            var s = ReadLine();
-            while (String.IsNullOrEmpty(s))
-            {
-                Write("Le text ne peux etre vide :");
-                s = ReadLine();
-            }
-            return s;
-        }
-
-        static double GetDoubleConsole(string messag)
-        {
-            double valeur;
-            while (!double.TryParse(GetStringConsole(messag), out valeur))
-                Write("verifiez votre saisie :");
-
-            return valeur;
-        }
-
-        static int GetIntConsole(string messag)
-        {
-            int valeur;
-            while (!int.TryParse(GetStringConsole(messag), out valeur))
-                Write("verifiez votre saisie :");
-
-            return valeur;
-        }
-
     }
 }
