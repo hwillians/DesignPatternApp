@@ -10,7 +10,6 @@ namespace DesignPatternApp
     {
         public int Id { get; set; }
         public string Nom { get; set; }
-
         public string Prenom { get; set; }
         private double salaire;
 
@@ -26,7 +25,7 @@ namespace DesignPatternApp
 
         public override string ToString()
         {
-            return String.Format("{0} {1} salaire : {2}",Prenom,Nom.ToUpper(),Salaire);
+            return String.Format("{0} : {1} {2} salaire : {3}", Id, Prenom, Nom.ToUpper(), Salaire);
         }
     }
 }

@@ -34,7 +34,9 @@ namespace DesignPatternApp
                         employes.Add(employe);
                         WriteLine(employe);
                         break;
-                    case 2: WriteLine("afficher la liste des employes"); break;
+                    case 2:
+                        foreach (var e in employes) WriteLine(e);
+                        break;
                     case 3: WriteLine("afficher un employé"); break;
                     case 0: WriteLine("à bientôt..."); break;
                     default:
