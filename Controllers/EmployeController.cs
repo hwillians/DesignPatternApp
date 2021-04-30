@@ -1,24 +1,13 @@
-﻿using DesignPatternApp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Controllers.Autres;
+﻿using System.Linq;
+using DesignPatternApp;
 
 namespace Controllers
 {
     public static class EmployeController
     {
-        public static void CreerEmployer()
+        public static void CreerEmployer(Employe employe)
         {
-            LocalStorage.Instance.Employes.Add(new Employe
-            {
-                Id = GetIntConsole("Tapez l'Id : "),
-                Prenom = GetStringConsole("Tapez le prénom : "),
-                Nom = GetStringConsole("Tapez le nom : "),
-                Salaire = GetDoubleConsole("Tapez le salaire : ")
-            });
+            LocalStorage.Instance.Employes.Add(employe);
         }
 
         public static Employe GetEmployeById(int id)
