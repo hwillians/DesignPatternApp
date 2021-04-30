@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
-using Controllers;
-using static System.Console;
+﻿using Controllers;
+using System;
 using static Controllers.Autres;
+using static System.Console;
 
 namespace DesignPatternApp
 {
@@ -34,12 +33,15 @@ namespace DesignPatternApp
                             WriteLine(e.Message);
                         }
                         break;
+
                     case 2:
                         WriteLine(String.Join("\n", LocalStorage.Instance.Employes));
                         break;
+
                     case 3:
                         WriteLine(EmployeController.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
                         break;
+
                     case 0: WriteLine("à bientôt..."); break;
 
                     default: WriteLine("Action non reconnue..."); break;
