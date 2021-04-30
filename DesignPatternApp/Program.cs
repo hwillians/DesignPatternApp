@@ -8,8 +8,7 @@ namespace DesignPatternApp
     {
         static void Main(string[] args)
         {
-            LocalStorage localStorage = LocalStorage.Instance;
-            var employes = localStorage.Employes;
+            var employes = LocalStorage.Instance.Employes;
             int choix = -1;
 
             WriteLine("*** Ménu Gestion des employés ***" +
@@ -24,15 +23,15 @@ namespace DesignPatternApp
                 switch (choix)
                 {
                     case 1:
-                        var employe = new Employe
-                        {
-                            Id = GetIntConsole("Tapez l'Id"),
-                            Prenom = getStringConsole("Tapez le prénom : "),
-                            Nom = getStringConsole("Tapez le nom : "),
-                        };
                         try
                         {
-                            employe.Salaire = GetDoubleConsole("Tapez le salaire");
+                            var employe = new Employe
+                            {
+                                Id = GetIntConsole("Tapez l'Id"),
+                                Prenom = GetStringConsole("Tapez le prénom : "),
+                                Nom = GetStringConsole("Tapez le nom : "),
+                                Salaire = GetDoubleConsole("Tapez le salaire")
+                            };
                             employes.Add(employe);
                             WriteLine(employe);
                         }
@@ -56,7 +55,7 @@ namespace DesignPatternApp
             }
         }
 
-        static string getStringConsole(string messag = "Valeur ")
+        static string GetStringConsole(string messag = "Valeur ")
         {
             Write(messag);
             var s = ReadLine();
@@ -71,7 +70,7 @@ namespace DesignPatternApp
         static double GetDoubleConsole(string messag)
         {
             double valeur;
-            while (!double.TryParse(getStringConsole(messag), out valeur))
+            while (!double.TryParse(GetStringConsole(messag), out valeur))
                 Write("verifiez votre saisie :");
 
             return valeur;
@@ -80,7 +79,7 @@ namespace DesignPatternApp
         static int GetIntConsole(string messag)
         {
             int valeur;
-            while (!int.TryParse(getStringConsole(messag), out valeur))
+            while (!int.TryParse(GetStringConsole(messag), out valeur))
                 Write("verifiez votre saisie :");
 
             return valeur;
