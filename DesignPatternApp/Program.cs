@@ -29,10 +29,17 @@ namespace DesignPatternApp
                             Id = GetIntConsole("tapez l'Id"),
                             Prenom = getStringConsole("Tapez le prénom : "),
                             Nom = getStringConsole("Tapez le Nom : "),
-                            Salaire = GetDoubleConsole("Tapez le salaire")
                         };
-                        employes.Add(employe);
-                        WriteLine(employe);
+                        try
+                        {
+                            employe.Salaire = GetDoubleConsole("Tapez le salaire");
+                            employes.Add(employe);
+                            WriteLine(employe);
+                        }
+                        catch (Exception e)
+                        {
+                            WriteLine(e.Message);
+                        }
                         break;
                     case 2:
                         foreach (var e in employes) WriteLine(e);
