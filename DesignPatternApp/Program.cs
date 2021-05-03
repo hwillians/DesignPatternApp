@@ -1,7 +1,7 @@
 ﻿using Controllers;
 using System;
-using static Controllers.Autres;
 using static System.Console;
+using static View.Outils;
 
 namespace DesignPatternApp
 {
@@ -25,8 +25,13 @@ namespace DesignPatternApp
                     case 1:
                         try
                         {
-                            EmployeController.CreerEmployer();
-                            WriteLine("L'employé à été créé avec succès.");
+                            WriteLine(EmployeController.CreerEmploye(
+                                new Employe
+                                {
+                                    Prenom = GetStringConsole("Tapez le prénom : "),
+                                    Nom = GetStringConsole("Tapez le nom : "),
+                                    Salaire = GetDoubleConsole("Tapez le salaire : ")
+                                }));
                         }
                         catch (Exception e)
                         {
@@ -35,7 +40,7 @@ namespace DesignPatternApp
                         break;
 
                     case 2:
-                        WriteLine(String.Join("\n", LocalStorage.Instance.Employes));
+                        WriteLine(string.Join("\n", EmployeController.GetListEmployes()));
                         break;
 
                     case 3:

@@ -1,9 +1,9 @@
 ﻿using System;
 using static System.Console;
 
-namespace Controllers
+namespace View
 {
-    public static class Autres
+    public static class Outils
     {
 
         public static string GetStringConsole(string messag = "Valeur ")
@@ -12,7 +12,7 @@ namespace Controllers
             var s = ReadLine();
             while (String.IsNullOrEmpty(s))
             {
-                Write("Le text ne peux etre vide :");
+                Write("Le text ne peux etre vide : ");
                 s = ReadLine();
             }
             return s;
@@ -22,7 +22,7 @@ namespace Controllers
         {
             double valeur;
             while (!double.TryParse(GetStringConsole(messag), out valeur))
-                Write("verifiez votre saisie :");
+                Write("Verifiez votre saisie : ");
 
             return valeur;
         }
@@ -31,11 +31,10 @@ namespace Controllers
         {
             int valeur;
             while (!int.TryParse(GetStringConsole(messag), out valeur))
-                Write("verifiez votre saisie :");
+                Write("Verifiez votre saisie : ");
 
             return valeur;
         }
-
 
     }
 }
