@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DesignPatternApp;
+using System.Collections.Generic;
 
-namespace DesignPatternApp
+namespace Repository
 {
     public sealed class LocalStorage
     {

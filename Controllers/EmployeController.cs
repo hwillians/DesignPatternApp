@@ -1,26 +1,20 @@
-﻿using DesignPatternApp;
+﻿using Business.Contracts;
+using DesignPatternApp;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Controllers
 {
-    public static class EmployeController
+    public class EmployeController
     {
-        public static Employe CreerEmploye(Employe employe)
-        {
-            employe.Id = LocalStorage.Instance.Employes.Count + 1;
-            LocalStorage.Instance.Employes.Add(employe);
-            return employe;
-        }
+        private IEmployeService EmployeService { get; }
 
-        public static List<Employe> GetListEmployes() => LocalStorage.Instance.Employes;
-        
-        public static Employe GetEmployeById(int id)
-        {
-            if (LocalStorage.Instance.Employes.Any(e => e.Id == id))
-                return LocalStorage.Instance.Employes.First(e => e.Id == id);
+        public EmployeController(IEmployeService employeService) => EmployeService = employeService;
 
-            return null;
-        }
+        public Employe CreerEmploye(Employe employe) => EmployeService.CreerEmploye(employe);
+
+        public List<Employe> GetListEmployes() => EmployeService.GetListEmployes();
+
+        public Employe GetEmployeById(int id) => EmployeService.GetEmployeById(id);
     }
 }

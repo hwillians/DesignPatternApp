@@ -1,5 +1,10 @@
-﻿using Controllers;
+﻿using Business;
+using Business.Contracts;
+using Controllers;
+using Repository;
+using Repository.Contracts;
 using System;
+using Unity;
 using static System.Console;
 using static View.Outils;
 
@@ -9,6 +14,13 @@ namespace DesignPatternApp
     {
         static void Main(string[] args)
         {
+            IUnityContainer unityContainer = new UnityContainer();
+            unityContainer.RegisterType<IEmployeService, EmployeService>();
+            unityContainer.RegisterType<IEmployeRepository, EmployeRepository>();
+            unityContainer.RegisterType<EmployeController, EmployeController>();
+
+            var controller = unityContainer.Resolve<EmployeController>();
+
             int choix = -1;
 
             WriteLine("*** Ménu Gestion des employés ***" +
@@ -25,13 +37,14 @@ namespace DesignPatternApp
                     case 1:
                         try
                         {
-                            WriteLine(EmployeController.CreerEmploye(
+                            Employe employe = controller.CreerEmploye(
                                 new Employe
                                 {
-                                    Prenom = GetStringConsole("Tapez le prénom : "),
-                                    Nom = GetStringConsole("Tapez le nom : "),
-                                    Salaire = GetDoubleConsole("Tapez le salaire : ")
-                                }));
+                                Prenom = GetStringConsole("Tapez le prénom : "),
+                                Nom = GetStringConsole("Tapez le nom : "),
+                                Salaire = GetDoubleConsole("Tapez le salaire : ")
+                                });
+                            WriteLine(employe);
                         }
                         catch (Exception e)
                         {
@@ -40,11 +53,11 @@ namespace DesignPatternApp
                         break;
 
                     case 2:
-                        WriteLine(string.Join("\n", EmployeController.GetListEmployes()));
+                        WriteLine(string.Join("\n", controller.GetListEmployes()));
                         break;
 
                     case 3:
-                        WriteLine(EmployeController.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
+                        WriteLine(controller.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
                         break;
 
                     case 0: WriteLine("à bientôt..."); break;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace DesignPatternApp
 {
@@ -21,7 +22,8 @@ namespace DesignPatternApp
 
         public override string ToString()
         {
-            return String.Format("{0} : {1} {2} salaire : {3}", Id, Prenom, Nom.ToUpper(), Salaire);
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+            return String.Format("{0} : {1} {2}, salaire : {3:F2}", Id, ti.ToTitleCase(Prenom), Nom.ToUpper(), Salaire);
         }
     }
 }
