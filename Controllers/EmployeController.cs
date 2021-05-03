@@ -8,7 +8,10 @@ namespace Controllers
     {
         private IEmployeService EmployeService { get; }
 
-        public EmployeController(IEmployeService employeService) => EmployeService = employeService;
+        public EmployeController(IEmployeService employeService)
+        {
+            EmployeService = employeService;
+        }
 
         public Employe CreerEmploye(Employe employe) => EmployeService.CreerEmploye(employe);
 

@@ -9,7 +9,10 @@ namespace Business
     {
         IEmployeRepository EmployeRepository { get; }
 
-        public EmployeService(IEmployeRepository employeRepository) => EmployeRepository = employeRepository;
+        public EmployeService(IEmployeRepository employeRepository)
+        {
+            EmployeRepository = employeRepository;
+        }
 
         public Employe CreerEmploye(Employe employe) => EmployeRepository.CreerEmploye(employe);
 

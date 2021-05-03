@@ -7,7 +7,7 @@ namespace View
 {
     public static class Outils
     {
-        public static void Menu(EmployeController EmployeController)
+        public static void Menu(EmployeController controller)
         {
             int choix = -1;
 
@@ -25,7 +25,7 @@ namespace View
                     case 1:
                         try
                         {
-                            Employe employe = EmployeController.CreerEmploye(
+                            Employe employe = controller.CreerEmploye(
                                 new Employe
                                 {
                                     Prenom = GetStringConsole("Tapez le prénom : "),
@@ -41,11 +41,11 @@ namespace View
                         break;
 
                     case 2:
-                        WriteLine(string.Join("\n", EmployeController.GetListEmployes()));
+                        WriteLine(string.Join("\n", controller.GetListEmployes()));
                         break;
 
                     case 3:
-                        WriteLine(EmployeController.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
+                        WriteLine(controller.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
                         break;
 
                     case 0: WriteLine("à bientôt..."); break;
