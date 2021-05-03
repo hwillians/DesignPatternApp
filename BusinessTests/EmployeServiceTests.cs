@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Repository;
-using System.Linq;
+
 
 namespace Business.Tests
 {
