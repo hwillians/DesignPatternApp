@@ -6,3 +6,4 @@ Exercises Design Pattern
 - Le salaire doit être toujours supérieur à 0
 ### V1 - Application Console
 ### V2 - Pattern MVC
+### V3 - Pattern MVC avancé
