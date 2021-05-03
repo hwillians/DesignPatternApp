@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "view": {
+      "commandName": "Project",
+      "workingDirectory": "E:\\Diginamic\\Csharp\\Supports de cours\\5 - Design Pattern\\DesignPatternApp\\View"
+    }
+  }
+}

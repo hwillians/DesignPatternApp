@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Business.Contracts\Business.Contracts.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
