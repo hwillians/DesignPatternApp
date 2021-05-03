@@ -1,7 +1,6 @@
 ﻿using Business.Contracts;
 using DesignPatternApp;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Controllers
 {
