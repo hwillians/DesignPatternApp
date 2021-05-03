@@ -1,5 +1,5 @@
 ﻿using Business.Contracts;
-using DesignPatternApp;
+using View;
 using System.Collections.Generic;
 
 namespace Controllers

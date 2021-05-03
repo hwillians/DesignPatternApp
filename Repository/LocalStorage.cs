@@ -1,4 +1,4 @@
-﻿using DesignPatternApp;
+﻿using View;
 using System.Collections.Generic;
 
 namespace Repository

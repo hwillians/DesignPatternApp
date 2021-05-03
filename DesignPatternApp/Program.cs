@@ -6,7 +6,7 @@ using Repository.Contracts;
 using Unity;
 using static View.Outils;
 
-namespace DesignPatternApp
+namespace View
 {
     class Program
     {
