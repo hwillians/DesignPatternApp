@@ -1,4 +1,4 @@
-﻿using DesignPatternApp;
+﻿using View;
 using Repository.Contracts;
 using System.Collections.Generic;
 using System.Linq;
