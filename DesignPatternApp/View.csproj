@@ -6,8 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business.Contracts\Business.Contracts.csproj" />
+    <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\Controllers\Controllers.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>
