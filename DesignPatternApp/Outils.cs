@@ -23,21 +23,13 @@ namespace View
                 switch (choix)
                 {
                     case 1:
-                        try
-                        {
-                            Employe employe = controller.CreerEmploye(
-                                new Employe
-                                {
-                                    Prenom = GetStringConsole("Tapez le prénom : "),
-                                    Nom = GetStringConsole("Tapez le nom : "),
-                                    Salaire = GetDoubleConsole("Tapez le salaire : ")
-                                });
-                            WriteLine(employe);
-                        }
-                        catch (Exception e)
-                        {
-                            WriteLine(e.Message);
-                        }
+
+                        Employe employe = controller.CreerEmploye(
+                            GetStringConsole("Tapez le prénom : "),
+                            GetStringConsole("Tapez le nom : "),
+                            GetDoubleConsole("Tapez le salaire : ")
+                            );
+                        WriteLine(employe != null ? employe : "Le salaire doit être supérieur à 0");
                         break;
 
                     case 2:
@@ -45,7 +37,9 @@ namespace View
                         break;
 
                     case 3:
-                        WriteLine(controller.GetEmployeById(GetIntConsole("Tapez l'Id : ")));
+                        int id = GetIntConsole("Tapez l'Id : ");
+                        Employe employeId = controller.GetEmployeById(id);
+                        WriteLine(employeId != null ? employeId : $"L'Id {id} n'est pas reconnu");
                         break;
 
                     case 0: WriteLine("à bientôt..."); break;

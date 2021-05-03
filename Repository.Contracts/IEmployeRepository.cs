@@ -5,7 +5,7 @@ namespace Repository.Contracts
 {
     public interface IEmployeRepository
     {
-        Employe CreerEmploye(Employe employe);
+        Employe CreerEmploye(string prenom, string nom, double salaire);
         List<Employe> GetListEmployes();
         Employe GetEmployeById(int id);
     }

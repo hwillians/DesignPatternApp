@@ -5,7 +5,7 @@ namespace Business.Contracts
 {
     public interface IEmployeService
     {
-        Employe CreerEmploye(Employe employe);
+        Employe CreerEmploye(string prenom, string nom, double salaire);
         List<Employe> GetListEmployes();
         Employe GetEmployeById(int id);
     }

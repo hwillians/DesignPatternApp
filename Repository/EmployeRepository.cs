@@ -7,9 +7,15 @@ namespace Repository
 {
     public class EmployeRepository : IEmployeRepository
     {
-        public Employe CreerEmploye(Employe employe)
+        public Employe CreerEmploye(string prenom, string nom, double salaire)
         {
-            employe.Id = LocalStorage.Instance.Employes.Count + 1;
+            Employe employe = new()
+            {
+                Id = LocalStorage.Instance.Employes.Count + 1,
+                Prenom = prenom,
+                Nom = nom,
+                Salaire = salaire
+            };
             LocalStorage.Instance.Employes.Add(employe);
             return employe;
         }

@@ -14,7 +14,9 @@ namespace Business
             EmployeRepository = employeRepository;
         }
 
-        public Employe CreerEmploye(Employe employe) => EmployeRepository.CreerEmploye(employe);
+        public Employe CreerEmploye(string prenom, string nom, double salaire) =>
+            EmployeRepository.CreerEmploye(prenom, nom, salaire);
+
 
         public List<Employe> GetListEmployes() => EmployeRepository.GetListEmployes();
 

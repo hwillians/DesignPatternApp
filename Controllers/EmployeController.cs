@@ -13,7 +13,11 @@ namespace Controllers
             EmployeService = employeService;
         }
 
-        public Employe CreerEmploye(Employe employe) => EmployeService.CreerEmploye(employe);
+        public Employe CreerEmploye(string prenom, string nom, double salaire)
+        {
+            if (salaire > 0) return EmployeService.CreerEmploye(prenom, nom, salaire);
+            return null;
+        }
 
         public List<Employe> GetListEmployes() => EmployeService.GetListEmployes();
 
